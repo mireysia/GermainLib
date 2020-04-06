@@ -7,16 +7,9 @@
 ## SOMMAIRE
 
 1. File organisation
-2. Documentation
-3. code specification
-4. Unit testing
-5. Git
-6. EDI configuration
-   1. Geany
-   2. Vs code
-7. Build system
-   1. Makefile
-   2. Cmake
+2. code specification
+3. Git
+4. Cmake Build system
    
 ### 1. File organisation
 
@@ -134,9 +127,7 @@ initialize a new repo
 - **never work on the same branch unless you do not edit the same file**
   
 
-### Build system
-
-## Cmake
+### Cmake Build system
 
 ### Build the project :
 
