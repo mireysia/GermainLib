@@ -6,8 +6,8 @@
 #include <stddef.h>
 #include <stdbool.h>
 
-#include "germainLib/node_simplelink.h"
-#include "germainLib/stack.h"
+#include "germainLib/collection/list/node_simplelink.h"
+#include "germainLib/collection/list/stack.h"
 
 Stack stack_alloc(void)
 {

@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "germainLib/node_simplelink.h"
+#include "germainLib/collection/list/node_simplelink.h"
 
 node_oneLink* nodeSimpleLink_alloc(void)
 {
@@ -24,6 +24,8 @@ void nodeSimpleLink_free(node_oneLink **node)
 {
     if( *node != NULL )
     {
+        (*node)->item = NULL;
+        (*node)->next = NULL;
         free(*node);
         *node = NULL;
     }

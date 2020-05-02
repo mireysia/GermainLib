@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include "germainLib/node_doublelink.h"
-#include "germainLib/queue.h"
+#include "germainLib/collection/list/node_doublelink.h"
+#include "germainLib/collection/list/queue.h"
 
 Queue queue_alloc(void)
 {

@@ -59,12 +59,4 @@ void nodeDoubleLink_insert(node_doubleLink *node, node_doubleLink *insert);
  */
 void nodeDoubleLink_remove(node_doubleLink *node, node_doubleLink **remove);
 
-/**
- * @brief 
- * 
- * @param firstNode 
- * @param secondNode 
- */
-void nodeDoubleLink_swapNode(node_doubleLink *firstNode, node_doubleLink *secondNode);
-
 #endif
