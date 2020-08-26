@@ -1,44 +1,53 @@
-cmake_minimum_required(VERSION 3.12...3.16)
+cmake_minimum_required(VERSION 3.12...3.17)
 
-project(GermainLib VERSION 0.1 DESCRIPTION "Powerful library in c" LANGUAGES C)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-
-    #set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-
-    # Testing only available if this is the main app
-    # Note this needs to be done in the main CMakeLists
-    # since it calls enable_testing, which must be in the
-    # main CMakeLists.
-    include(CTest)
-
-    # Docs only available if this is the main app
-    find_package(Doxygen)
-    if(Doxygen_FOUND)
-	    add_subdirectory(docs)
-    else()
-	    message(STATUS "Doxygen not found, not building docs")
-    endif()
+if( ${CMAKE_VERSION} VERSION_LESS 3.12 )
+    cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
 endif()
 
+#force to use gcc
+set(CMAKE_C_COMPILER "gcc")
 
-# FetchContent added in CMake 3.11, downloads during the configure step
-include(FetchContent)
-# FetchContent_MakeAvailable was not added until CMake 3.14
-if(${CMAKE_VERSION} VERSION_LESS 3.14)
-    include(cmake/add_FetchContent_MakeAvailable.cmake)
-endif()
+set( CMAKE_POSITION_INDEPENDENT_CODE ON )
 
-# The compiled library code is here
-add_subdirectory(src)
+include( "${CMAKE_CURRENT_LIST_DIR}/cmake/project-meta-info.in" )
 
-# The executable code is here
-add_subdirectory(apps)
+# Define a project for the current CMakeLists.txt.
+project(    GermainLib
+    VERSION ${project_version} 
+    DESCRIPTION ${project_description} 
+    HOMEPAGE_URL ${project_homepage} 
+    LANGUAGES C )
+    
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 
-# Testing only available if this is the main app
-# Emergency override MODERN_CMAKE_BUILD_TESTING provided as well
-if((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME OR MODERN_CMAKE_BUILD_TESTING) AND BUILD_TESTING)
-    add_subdirectory(test)
-endif()
+file(GLOB_RECURSE SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c")
+file(GLOB_RECURSE HEADER "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h")
 
+add_library( germainLib_ObjLib OBJECT )
+
+target_sources( germainLib_ObjLib
+	PRIVATE 
+		${SOURCE}
+	PUBLIC 
+		${HEADER} )
+
+# Required include search-paths and constexpr support.
+target_include_directories( germainLib_ObjLib 
+	PUBLIC 
+		"${CMAKE_CURRENT_SOURCE_DIR}/include" )
+
+target_compile_features( germainLib_ObjLib 
+	PUBLIC 
+		c_std_99 )
+
+# A shared library for basic-math functionality.
+add_library( germainLib SHARED )
+
+target_link_libraries( germainLib 
+	PUBLIC 
+		germainLib_ObjLib )
+
+# Create ALIAS targets.
+add_library( GermainLib::germainLib ALIAS germainLib )
+
+add_subdirectory( apps)

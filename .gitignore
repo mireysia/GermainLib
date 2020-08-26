@@ -1,6 +1,7 @@
 .vscode/
 *.o
-main
+germain
 *.a
 .idea/
 *build*
+.DS_Store

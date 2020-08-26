@@ -1,0 +1,10 @@
+# project-meta-info.in 02
+
+# The version number of this project.
+set( project_version 1.0.0 )
+
+# The description of this project.
+set( project_description "Description of root-project" )
+
+# The homepage of this project.
+set( project_homepage "https://www.example.com" )
