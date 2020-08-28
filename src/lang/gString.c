@@ -87,8 +87,8 @@ gList_ll* gString_splitString( const gString* string, const char* symbol)
     gList_ll* list = gListll_new();
     char *begin = NULL;
     char *parser = NULL;
-    char *s = NULL;
-    begin = parser = string;
+    gString *s = NULL;
+    begin = parser = string->string;
 
     while ( *parser != '\0' )
     {

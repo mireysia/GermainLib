@@ -2,6 +2,7 @@
 #define _GERMAINLIB_H__
 
 #include "collection/gCollection.h"
-#include "utils/gElement.h"
+#include "lang/gLang.h"
+#include "utils/gUtils.h"
 
 #endif
