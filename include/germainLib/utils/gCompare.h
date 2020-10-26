@@ -5,6 +5,10 @@
 
 #include "gElement.h"
 
+/**
+ * @brief 
+ * 
+ */
 typedef bool (*compare)( gElement_t one, gElement_t two);
 
 #endif

@@ -17,13 +17,67 @@ struct _G_STRING
     char *string;
 };
 
+/**
+ * @brief 
+ * 
+ * @return gString* 
+ */
 gString* gString_new(void);
+
+/**
+ * @brief 
+ * 
+ * @param string 
+ */
 void gString_free( gString **string);
+
+/**
+ * @brief 
+ * 
+ * @param begin 
+ * @param end 
+ * @return gString* 
+ */
 gString* gString_duplicateCharacter( const char* begin, const char* end);
+
+/**
+ * @brief 
+ * 
+ * @param begin 
+ * @param end 
+ * @return char* 
+ */
 char* gString_t_duplicateCharacter( const char* begin, const char* end);
+
+/**
+ * @brief 
+ * 
+ * @param string 
+ * @return gString* 
+ */
 gString* gString_duplicate( const gString* string);
+
+/**
+ * @brief 
+ * 
+ * @param string 
+ */
 void gString_printfMetaData( const gString* string);
+
+/**
+ * @brief 
+ * 
+ * @param e 
+ */
 void gString_printf( const gElement_t e);
+
+/**
+ * @brief 
+ * 
+ * @param string 
+ * @param symbol 
+ * @return gList_ll* 
+ */
 gList_ll* gString_splitString( const gString* string, const char* symbol);
 
 #endif

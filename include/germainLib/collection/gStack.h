@@ -18,16 +18,51 @@ struct _G_STACK
     gSimpleLinkNode *node;
 };
 
+/**
+ * @brief 
+ * 
+ * @return gStack* 
+ */
 gStack* gStack_new(void);
 
+/**
+ * @brief 
+ * 
+ * @param stack 
+ */
 void gStack_free( gStack* *stack);
 
+/**
+ * @brief 
+ * 
+ * @param stack 
+ * @return true 
+ * @return false 
+ */
 bool gStack_empty( gStack* stack);
 
+/**
+ * @brief 
+ * 
+ * @param stack 
+ * @return gElement_t 
+ */
 gElement_t gStack_peek( gStack* stack);
 
+/**
+ * @brief 
+ * 
+ * @param stack 
+ * @return gElement_t 
+ */
 gElement_t gStack_pop( gStack* stack);
 
+/**
+ * @brief 
+ * 
+ * @param stack 
+ * @param e 
+ */
 void gStack_push( gStack* stack, gElement_t e);
 
 /* TO DO */
